@@ -40,21 +40,26 @@ fun MavenPom.configureMavenCentralMetadata(project: Project) {
 }
 
 fun mavenRepositoryUri(): URI {
+    return URI("file:///mnt/files2/repo/")
+	/*
     val repositoryId: String? = System.getenv("libs.repository.id")
     return if (repositoryId == null) {
         URI("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
     } else {
         URI("https://oss.sonatype.org/service/local/staging/deployByRepositoryId/$repositoryId")
     }
+	*/
 }
 
 fun configureMavenPublication(rh: RepositoryHandler, project: Project) {
     rh.maven {
         url = mavenRepositoryUri()
+	/*
         credentials {
             username = project.getSensitiveProperty("libs.sonatype.user")
             password = project.getSensitiveProperty("libs.sonatype.password")
         }
+	*/
     }
 }
 
