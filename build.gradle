@@ -44,9 +44,10 @@ buildscript {
 
     repositories {
         mavenCentral()
+	maven { url "https://h1.danbrough.org/maven/" }
         maven { url "https://plugins.gradle.org/m2/" }
         maven { url "https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev" }
-        mavenLocal()
+        //mavenLocal()
     }
 
     dependencies {
@@ -124,6 +125,9 @@ allprojects {
          */
         google()
         mavenCentral()
+       	maven { url "https://h1.danbrough.org/maven/" }
+	//mavenLocal()
+
         maven { url "https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev" }
     }
 }
