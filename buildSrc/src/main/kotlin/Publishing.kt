@@ -40,7 +40,7 @@ fun MavenPom.configureMavenCentralMetadata(project: Project) {
 }
 
 fun mavenRepositoryUri(): URI {
-    return URI("file:///mnt/files2/repo/")
+	 return URI(project.property("LOCAL_MAVEN_REPO").toString().trim())
 	/*
     val repositoryId: String? = System.getenv("libs.repository.id")
     return if (repositoryId == null) {
