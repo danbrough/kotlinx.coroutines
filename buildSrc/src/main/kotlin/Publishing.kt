@@ -39,7 +39,7 @@ fun MavenPom.configureMavenCentralMetadata(project: Project) {
     }
 }
 
-fun mavenRepositoryUri(): URI {
+fun mavenRepositoryUri(project:Project): URI {
 	 return URI(project.property("LOCAL_MAVEN_REPO").toString().trim())
 	/*
     val repositoryId: String? = System.getenv("libs.repository.id")
@@ -53,7 +53,7 @@ fun mavenRepositoryUri(): URI {
 
 fun configureMavenPublication(rh: RepositoryHandler, project: Project) {
     rh.maven {
-        url = mavenRepositoryUri()
+        url = mavenRepositoryUri(project)
 	/*
         credentials {
             username = project.getSensitiveProperty("libs.sonatype.user")
