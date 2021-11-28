@@ -70,10 +70,13 @@ if (rootProject.ext.native_targets_enabled) {
  * because JMV-only projects depend on core, thus core should always be initialized before configuration.
  */
 kotlin {
+    js {
+        nodejs()
+    }
+
     configure(sourceSets) {
         def srcDir = name.endsWith('Main') ? 'src' : 'test'
         def platform = name[0..-5]
-        println("PLATFORM: $platform")
         kotlin.srcDirs = ["$platform/$srcDir"]
         if (name == "jvmMain") {
             resources.srcDirs = ["$platform/resources"]
@@ -88,8 +91,10 @@ kotlin {
 
     configure(targets) {
         // Configure additional binaries and test runs -- one for each OS
+        println("configureTargets: name:$name  it:$it")
         if (["macos", "linux", "mingw"].any { name.startsWith(it) }) {
-            binaries {
+            println("doing: $it")
+/*            binaries {
                 // Test for memory leaks using a special entry point that does not exit but returns from main
                 binaries.getTest("DEBUG").freeCompilerArgs += ["-e", "kotlinx.coroutines.mainNoExit"]
                 // Configure a separate test where code runs in background
@@ -99,7 +104,7 @@ kotlin {
             }
             testRuns {
                 background { setExecutionSourceFrom(binaries.backgroundDebugTest) }
-            }
+            }*/
         }
     }
 }
