@@ -1,4 +1,19 @@
-# kotlinx.coroutines 
+# kotlinx.coroutines with linuxArm64 and linuxArm32Hfp
+
+This fork has minimal changes to allow building linuxArm64 and linuxArm32Hfp kotlin native libraries.
+
+Binaries are available on my maven repository at:
+`https://h1.danbrough.org/maven` 
+
+The current versions available are:
+
+* 1.5.2-danbroid
+* 1.5.2-danbroid-native-mt
+* 1.6.0-RC-danbroid
+
+With the source code at:
+https://github.com/danbrough/kotlinx.coroutines 
+and https://github.com/danbrough/kotlinx.atomicfu
 
 [![official JetBrains project](https://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
