@@ -19,6 +19,7 @@ private val cacheRedirectorEnabled = System.getenv("CACHE_REDIRECTOR")?.toBoolea
  *  To add a repository to the list create an issue in ADM project (example issue https://youtrack.jetbrains.com/issue/IJI-149)
  */
 private val mirroredUrls = listOf(
+    "https://h1.danbrough.org/maven",
     "https://cdn.azul.com/zulu/bin",
     "https://clojars.org/repo",
     "https://dl.google.com/android/repository",
