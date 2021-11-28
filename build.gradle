@@ -49,15 +49,17 @@ buildscript {
 
     if (using_snapshot_version) {
         repositories {
-            mavenLocal()
+            maven { url "https://h1.danbrough.org/maven" }
+            //mavenLocal()
         }
     }
 
     repositories {
         mavenCentral()
+        maven { url "https://h1.danbrough.org/maven" }
         maven { url "https://plugins.gradle.org/m2/" }
         maven { url "https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev" }
-        mavenLocal()
+        //mavenLocal()
     }
 
     dependencies {
@@ -109,6 +111,8 @@ allprojects {
         }
     }
 
+
+
     ext.unpublished = unpublished
 
     // This project property is set during nightly stress test
@@ -137,9 +141,9 @@ allprojects {
          * google should be first in the repository list because some of the play services
          * transitive dependencies was removed from jcenter, thus breaking gradle dependency resolution
          */
+        maven { url "https://h1.danbrough.org/maven" }
         google()
         mavenCentral()
-        maven { url "https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev" }
     }
 }
 
