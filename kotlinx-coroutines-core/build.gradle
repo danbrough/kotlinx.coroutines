@@ -73,6 +73,7 @@ kotlin {
     configure(sourceSets) {
         def srcDir = name.endsWith('Main') ? 'src' : 'test'
         def platform = name[0..-5]
+        println("PLATFORM: $platform")
         kotlin.srcDirs = ["$platform/$srcDir"]
         if (name == "jvmMain") {
             resources.srcDirs = ["$platform/resources"]
