@@ -9,7 +9,7 @@ The current versions available are:
 
 * 1.5.2-danbroid
 * 1.5.2-danbroid-native-mt
-* 1.6.0-RC3-danbroid
+* 1.6.0-danbroid
 
 With the source code at:
 https://github.com/danbrough/kotlinx.coroutines 
