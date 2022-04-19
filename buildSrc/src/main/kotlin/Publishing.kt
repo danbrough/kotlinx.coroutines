@@ -39,22 +39,27 @@ fun MavenPom.configureMavenCentralMetadata(project: Project) {
     }
 }
 
-fun mavenRepositoryUri(): URI {
+fun mavenRepositoryUri(project:Project): URI {
+	 return URI(project.property("LOCAL_MAVEN_REPO").toString().trim())
+	/*
     val repositoryId: String? = System.getenv("libs.repository.id")
     return if (repositoryId == null) {
         URI("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
     } else {
         URI("https://oss.sonatype.org/service/local/staging/deployByRepositoryId/$repositoryId")
     }
+	*/
 }
 
 fun configureMavenPublication(rh: RepositoryHandler, project: Project) {
     rh.maven {
-        url = mavenRepositoryUri()
+        url = mavenRepositoryUri(project)
+	/*
         credentials {
             username = project.getSensitiveProperty("libs.sonatype.user")
             password = project.getSensitiveProperty("libs.sonatype.password")
         }
+	*/
     }
 }
 
