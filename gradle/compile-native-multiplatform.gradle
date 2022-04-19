@@ -13,6 +13,8 @@ kotlin {
     }
 
     targets {
+	addTarget(presets.linuxArm64)
+        addTarget(presets.linuxArm32Hfp)
         addTarget(presets.linuxX64)
         addTarget(presets.iosArm64)
         addTarget(presets.iosArm32)
