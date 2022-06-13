@@ -7,6 +7,7 @@
 import org.gradle.api.Project
 import org.gradle.api.artifacts.dsl.*
 import org.gradle.api.publish.maven.*
+import org.gradle.kotlin.dsl.*
 import org.gradle.plugins.signing.*
 import java.net.*
 
@@ -60,6 +61,11 @@ fun configureMavenPublication(rh: RepositoryHandler, project: Project) {
             password = project.getSensitiveProperty("libs.sonatype.password")
         }
 	*/
+    }
+
+    // Something that's easy to "clean" for development, not mavenLocal
+    rh.maven("${project.rootProject.buildDir}/repo") {
+        name = "buildRepo"
     }
 }
 
