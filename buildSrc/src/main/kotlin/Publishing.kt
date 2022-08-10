@@ -41,7 +41,8 @@ fun MavenPom.configureMavenCentralMetadata(project: Project) {
 }
 
 fun mavenRepositoryUri(project:Project): URI {
-	 return URI(project.property("LOCAL_MAVEN_REPO").toString().trim())
+          return URI("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+	 //return URI(project.property("LOCAL_MAVEN_REPO").toString().trim())
 	/*
     val repositoryId: String? = System.getenv("libs.repository.id")
     return if (repositoryId == null) {
@@ -55,12 +56,12 @@ fun mavenRepositoryUri(project:Project): URI {
 fun configureMavenPublication(rh: RepositoryHandler, project: Project) {
     rh.maven {
         url = mavenRepositoryUri(project)
-	/*
+
         credentials {
-            username = project.getSensitiveProperty("libs.sonatype.user")
-            password = project.getSensitiveProperty("libs.sonatype.password")
+            username = project.getSensitiveProperty("sonatypeUsername")
+            password = project.getSensitiveProperty("sonatypePassword")
         }
-	*/
+
     }
 
     // Something that's easy to "clean" for development, not mavenLocal
@@ -70,7 +71,7 @@ fun configureMavenPublication(rh: RepositoryHandler, project: Project) {
 }
 
 fun signPublicationIfKeyPresent(project: Project, publication: MavenPublication) {
-    val keyId = project.getSensitiveProperty("libs.sign.key.id")
+    /*val keyId = project.getSensitiveProperty("libs.sign.key.id")
     val signingKey = project.getSensitiveProperty("libs.sign.key.private")
     val signingKeyPassphrase = project.getSensitiveProperty("libs.sign.passphrase")
     if (!signingKey.isNullOrBlank()) {
@@ -78,7 +79,11 @@ fun signPublicationIfKeyPresent(project: Project, publication: MavenPublication)
             useInMemoryPgpKeys(keyId, signingKey, signingKeyPassphrase)
             sign(publication)
         }
+    }*/
+    project.extensions.configure<SigningExtension>("signing") {
+      sign(publication)
     }
+
 }
 
 private fun Project.getSensitiveProperty(name: String): String? {
