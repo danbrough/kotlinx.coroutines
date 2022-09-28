@@ -43,9 +43,9 @@ fun MavenPom.configureMavenCentralMetadata(project: Project) {
 fun mavenRepositoryUri(): URI {
     val repositoryId: String? = System.getenv("libs.repository.id")
     return if (repositoryId == null) {
-        URI("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+        URI("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
     } else {
-        URI("https://oss.sonatype.org/service/local/staging/deployByRepositoryId/$repositoryId")
+        URI("https://s02.oss.sonatype.org/service/local/staging/deployByRepositoryId/$repositoryId")
     }
 }
 
