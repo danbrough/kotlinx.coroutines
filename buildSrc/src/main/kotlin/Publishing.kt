@@ -65,15 +65,20 @@ fun configureMavenPublication(rh: RepositoryHandler, project: Project) {
 }
 
 fun signPublicationIfKeyPresent(project: Project, publication: MavenPublication) {
-    val keyId = project.getSensitiveProperty("libs.sign.key.id")
-    val signingKey = project.getSensitiveProperty("libs.sign.key.private")
-    val signingKeyPassphrase = project.getSensitiveProperty("libs.sign.passphrase")
-    if (!signingKey.isNullOrBlank()) {
+//    val keyId = project.getSensitiveProperty("libs.sign.key.id")
+//    val signingKey = project.getSensitiveProperty("libs.sign.key.private")
+//    val signingKeyPassphrase = project.getSensitiveProperty("libs.sign.passphrase")
+//    if (!signingKey.isNullOrBlank()) {
+//        project.extensions.configure<SigningExtension>("signing") {
+//            useInMemoryPgpKeys(keyId, signingKey, signingKeyPassphrase)
+//            sign(publication)
+//        }
+//    }
+    if (project.hasProperty("signPublications"))
         project.extensions.configure<SigningExtension>("signing") {
-            useInMemoryPgpKeys(keyId, signingKey, signingKeyPassphrase)
+           // useInMemoryPgpKeys(keyId, signingKey, signingKeyPassphrase)
             sign(publication)
         }
-    }
 }
 
 private fun Project.getSensitiveProperty(name: String): String? {
