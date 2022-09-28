@@ -54,7 +54,9 @@ fun configureMavenPublication(rh: RepositoryHandler, project: Project) {
         url = mavenRepositoryUri()
         credentials {
             username = project.getSensitiveProperty("libs.sonatype.user")
-            password = project.getSensitiveProperty("libs.sonatype.password")
+            password = project.getSensitiveProperty("libs.sonatype.password").also {
+                println("PASSWORD: $it")
+            }
         }
     }
 
