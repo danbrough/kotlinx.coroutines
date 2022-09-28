@@ -45,7 +45,7 @@ fun mavenRepositoryUri(): URI {
     return if (repositoryId == null) {
         URI("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
     } else {
-        URI("https://s02.oss.sonatype.org/service/local/staging/deployByRepositoryId/$repositoryId")
+        URI("https://s01.oss.sonatype.org/service/local/staging/deployByRepositoryId/$repositoryId")
     }
 }
 

@@ -6,4 +6,5 @@ cd "$(dirname "$0")"
 
 TASKS=publishAllPublicationsToMavenRepository
 
-./gradlew -PsignPublications TASKS
+./gradlew -PsignPublications \
+  $TASKS
