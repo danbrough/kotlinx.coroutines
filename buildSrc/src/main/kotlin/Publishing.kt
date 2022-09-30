@@ -58,6 +58,11 @@ fun configureMavenPublication(rh: RepositoryHandler, project: Project) {
         }
     }
 
+
+    rh.maven("../../../build/m2"){
+        name = "M2"
+    }
+
     // Something that's easy to "clean" for development, not mavenLocal
     rh.maven("${project.rootProject.buildDir}/repo") {
         name = "buildRepo"
