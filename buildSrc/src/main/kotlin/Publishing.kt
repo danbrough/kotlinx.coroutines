@@ -45,7 +45,7 @@ fun mavenRepositoryUri(): URI {
     return if (repositoryId == null) {
         URI("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
     } else {
-        URI("https://s01.oss.sonatype.org/service/local/staging/deployByRepositoryId/$repositoryId".also{println("MAVEN URL: $it")})
+        URI("https://s01.oss.sonatype.org/service/local/staging/deployByRepositoryId/$repositoryId")
     }
 }
 
@@ -53,8 +53,8 @@ fun configureMavenPublication(rh: RepositoryHandler, project: Project) {
     rh.maven {
         url = mavenRepositoryUri()
         credentials {
-            username = project.getSensitiveProperty("libs.sonatype.user")
-            password = project.getSensitiveProperty("libs.sonatype.password")
+            username = project.properties["libs.sonatype.user"].toString().trim()
+            password = project.properties["libs.sonatype.password"].toString().trim()
         }
     }
 
