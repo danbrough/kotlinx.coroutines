@@ -15,7 +15,7 @@ kotlin {
         if (it.irTarget != null) {
             irTarget.nodejs()
             irTarget.compilations['main']?.dependencies {
-                api "org.jetbrains.kotlinx:atomicfu-js:$atomicfu_version"
+                api "org.danbrough.kotlinx:atomicfu-js:$atomicfu_version"
             }
         }
     }
